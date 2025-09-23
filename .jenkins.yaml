@@ -1,0 +1,6 @@
+triggers:
+    cron: @daily
+builders:
+    - script
+script:
+    - make dist
