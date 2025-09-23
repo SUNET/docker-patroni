@@ -1,6 +1,6 @@
 VERSION=$(LATEST)
-VERSIONS:=4.0.7
-LATEST=4.0.7
+VERSIONS:=4.0.7 4.1.0
+LATEST=4.1.0
 NAME=patroni
 REGISTRY:=docker.sunet.se
 
