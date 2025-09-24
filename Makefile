@@ -1,6 +1,7 @@
 VERSION=$(LATEST)
 VERSIONS:=4.0.7 4.1.0
 LATEST=4.1.0
+PGVERSION=16
 NAME=patroni
 REGISTRY:=docker.sunet.se
 
@@ -19,8 +20,8 @@ std: build
 
 build: tar
 	cd patroni-$(VERSION); \
-	docker build --no-cache -t $(NAME):$(VERSION) .
+	docker build --no-cache --build-arg PG_MAJOR=$(PGVERSION) -t $(NAME):$(VERSION)-$(PGVERSION) .
 
 push: build
-	docker tag $(NAME):$(VERSION) $(REGISTRY)/$(NAME):$(VERSION)
-	docker push $(REGISTRY)/$(NAME):$(VERSION)
+	docker tag $(NAME):$(VERSION)-$(PGVERSION) $(REGISTRY)/$(NAME):$(VERSION)-$(PGVERSION)
+	docker push $(REGISTRY)/$(NAME):$(VERSION)-$(PGVERSION)
