@@ -1,0 +1,15 @@
+diff --git a/Dockerfile b/Dockerfile
+index 7090ed38..e6f94f4b 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -25,7 +25,9 @@ RUN set -ex \
+             | grep -Ev '^python3-(sphinx|etcd|consul|kazoo|kubernetes)' \
+             | xargs apt-get install -y vim curl less jq locales haproxy sudo \
+                             python3-etcd python3-kazoo python3-pip busybox \
+-                            net-tools iputils-ping dumb-init --fix-missing \
++                            net-tools iputils-ping dumb-init \
++                            pgbackrest \
++                            --fix-missing \
+ \
+     # Cleanup all locales but en_US.UTF-8
+     && find /usr/share/i18n/charmaps/ -type f ! -name UTF-8.gz -delete \
