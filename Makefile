@@ -21,6 +21,7 @@ std: build
 
 build: tar
 	cd patroni-$(VERSION); \
+	patch < ../add-pgbackrest.patch; \
 	docker build --no-cache --build-arg PG_MAJOR=$(PGVERSION) -t $(NAME):$(VERSION)-$(PGVERSION) .
 
 push: build
